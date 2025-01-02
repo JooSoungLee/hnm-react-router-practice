@@ -1,23 +1,29 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import './ProductCard.css'; // CSS 파일 import
 
 const ProductCard = ({ item }) => {
   const navigate = useNavigate();
-  const showDetail=()=>{
+
+  const showDetail = () => {
     navigate(`/product/${item.id}`);
-  }
+  };
+
   return (
-    <div style={{ width: '100%', margin: '10px', textAlign: 'center', cursor: 'pointer' }} onClick={showDetail}>
+    <div className="product-card" onClick={showDetail}>
       <img
         src={item?.img}
         alt={item?.title}
-        style={{ maxWidth: '100%', height: 'auto' }}
+        className="product-image"
       />
-      <div>{item?.choice === true ? "Conscious choice" : "Unconscious Choices"}</div>
-      <div>{item?.title}</div>
-      <div>{item?.price}</div>
-      <div>{item?.new === true ? "신제품" : ""}</div>
+      <div className="product-choice">
+        {item?.choice ? "Conscious choice" : "Unconscious Choices"}
+      </div>
+      <div className="product-title">{item?.title}</div>
+      <div className="product-price">{item?.price}</div>
+      <div className={`product-label ${item?.new ? 'new' : 'popular'}`}>
+        {item?.new ? "신제품" : "인기제품"}
+      </div>
     </div>
   );
 };
