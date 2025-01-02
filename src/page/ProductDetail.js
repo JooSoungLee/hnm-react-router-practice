@@ -1,59 +1,50 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import './ProductDetail.css'; // CSS 파일 import
 
 const ProductDetail = () => {
-  let {id} = useParams();
+  let { id } = useParams();
+  const [product, setProduct] = useState(null);
 
-  
-  const[product, setProduct] = useState(null);
-  
-  const getProductDetail = async() => {
+  const getProductDetail = async () => {
     let url = `http://localhost:5000/products/${id}`;
-    console.log(url);
-    let response = await fetch(url)
+    let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
     setProduct(data);
-  }
-  
-  useEffect(()=>{
+  };
+
+  useEffect(() => {
     getProductDetail();
   }, []);
-  
+
   return (
-    <Container>
-      <Row>
-        <Col className="product-img">
-          <img src={product?.img}></img>
+    <Container className="product-detail-container">
+      <Row className="align-items-center">
+        <Col md={6} className="product-img">
+          <img src={product?.img} alt={product?.title} className="img-fluid" />
         </Col>
-        <Col>
-          <div>
-            {product?.title}
-          </div>
-          <div>
-            {product?.price}
-          </div>
-          <div>
-            {product?.choice===true?"Conscious choice":"Unconscious Choice"}
-          </div>
-          <div>
-            <Form.Select aria-label="Default select example">
+        <Col md={6}>
+          <div className="product-info">
+            <h2 className="product-title">{product?.title}</h2>
+            <p className="product-price">{product?.price} 원</p>
+            <p className="product-choice">
+              {product?.choice === true ? "Conscious choice" : "Unconscious Choice"}
+            </p>
+            <Form.Select aria-label="사이즈 선택" className="size-select">
               <option>사이즈 선택</option>
-              {product?.size.map((obj)=>(
-                <option>{obj}</option>
+              {product?.size.map((obj, index) => (
+                <option key={index}>{obj}</option>
               ))}
             </Form.Select>
-          </div>
-          <div>
-            <Button variant="dark">추가</Button>
+            <Button variant="dark" className="add-button">추가</Button>
           </div>
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default ProductDetail
+export default ProductDetail;

@@ -1,0 +1,62 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-area {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    margin-right: 20px; /* 로고와 메뉴 사이의 간격 */
+    cursor: pointer;
+}
+
+.menu-list {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-list li {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-list li:hover {
+    background-color: #f0f0f0;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.search-area input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    margin-left: 5px;
+    outline: none;
+}
+
+.search-area input:focus {
+    border-color: #007bff;
+}
+
+.login-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #333;
+}

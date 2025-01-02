@@ -30,13 +30,15 @@ function App() {
     console.log("authenticate : ",  authenticate);
   }, [authenticate]);
   return (
-    <div>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<ProductAll/>}></Route>
-        <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>}></Route>
-        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}/>}></Route>
-      </Routes>
+    <div className="app-container">
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
+      <div className="routes-container">
+        <Routes>
+          <Route path="/" element={<ProductAll/>}></Route>
+          <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>}></Route>
+          <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}/>}></Route>
+        </Routes>
+      </div>
     </div>
   );
 }

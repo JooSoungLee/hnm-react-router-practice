@@ -8,6 +8,7 @@
 .nav-section{
   display:flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .menu-list{
@@ -27,4 +28,13 @@
 .product-img{
   display: flex;
   justify-content: center;
+}
+
+/* App.css */
+.app-container {
+  margin: 5px 0; /* 전체 간격 */
+}
+
+.routes-container {
+  margin-top: 10px; /* Navbar와 Routes 사이의 간격 */
 }

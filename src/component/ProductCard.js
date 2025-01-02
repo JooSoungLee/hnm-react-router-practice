@@ -8,7 +8,7 @@ const ProductCard = ({ item }) => {
     navigate(`/product/${item.id}`);
   }
   return (
-    <div style={{ width: '100%', margin: '10px', textAlign: 'center' }} onClick={showDetail}>
+    <div style={{ width: '100%', margin: '10px', textAlign: 'center', cursor: 'pointer' }} onClick={showDetail}>
       <img
         src={item?.img}
         alt={item?.title}
